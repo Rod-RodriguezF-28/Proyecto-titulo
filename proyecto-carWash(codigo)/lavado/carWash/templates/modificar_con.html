@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/registrarse.css' %}">
+
+{% endblock css %}
+
+{% block title %}
+<title>Formulario de contrato</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!-- CONTENEDOR DEL FORMULARIO -->
+<!--========================================================== -->
+<div class="container  border-top border-primary " style="max-width: 500px" id="contenedor-formulario">
+    <div class="text-center mb-4" id="titulo-formulario">
+        <div>
+            <img src="{% static './img/support.png' %}" alt="" class="img-fluid ps-5">
+        </div>
+        <h2>
+            Modifica el contrato del cliente
+        </h2>
+        <p class="fs-5">
+            <span>Cambie el estado del servicio contratado Pendiente, En proceso, Completado</span>
+        </p>
+    </div>
+    <form action="{% url 'MODIC' %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="hidden" class="form-control" name="id_contrato" id="id_contrato"
+                value="{{contrato.id_contrato}}" required>
+        </div>
+        <div class="mb-3">
+            <input type="hidden" class="form-control" name="fecha_ini" id="fecha_ini" value="{{contrato.fecha_ini}}">
+        </div>
+        <div class="mb-3">
+            <input type="hidden" class="form-control" name="dueno" id="dueno"
+                value="{{contrato.dueno}}" required>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" name="estado" id="estado" required>
+                <option>Seleccione el estado</option>
+                {% for item in estados %}
+                {% if item.1 == contrato.estado_es.estado_ser %}
+                <option selected>{{item.1}}</option>
+                {% else %}
+                <option>{{item.1}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input type="hidden" class="form-control" name="servicio" id="servicio"
+                value="{{contrato.servicio.nombre_ser}}" required>
+        </div>
+        <div class="mb-3">
+            <input type="hidden" class="form-control" name="cate_vehi" id="cate_vehi"
+                value="{{contrato.vehi.cate_vehi}}" required>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class=" btn btn-primary w-100 fs-5">
+                Modificar contrato cliente
+            </button>
+        </div>
+    </form>
+    <span
+        class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+{% endblock contenido %}

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C21F3CCB-10A9-3107-4568-A2048D80F732" containerWithKeyObject="A0EB0D57-C9C5-B748-2D84-84534B7BF3E6" localFKIndex="89EA8F6D-ADAC-5351-9325-B924FC875F71" name="EMPLEADO_AGENDA_FK">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-21 07:05:18 UTC</createdTime>
+<generatorID>225B4C4D-6C8F-CFA0-F20B-14AAA5EE4AB5</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<referredTableLongName>AGENDA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6B58C5BF-2866-77BA-8369-E01269C8B172</referredTableID>
+<keyObject>DB164F4B-7F22-18AC-D3B8-A47F2C98A568</keyObject>
+<referredKeyID>DB164F4B-7F22-18AC-D3B8-A47F2C98A568</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_agenda</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

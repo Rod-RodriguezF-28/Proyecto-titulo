@@ -1,0 +1,276 @@
+<!doctype html>
+{% load static %}
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/trabajos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <title>Informes</title>
+</head>
+
+<body>
+    <!--========================================================== -->
+    <!-- ENCABEZADO -->
+    <!--========================================================== -->
+    <header class="container-fluid bg-primary d-flex justify-content-center">
+        <p class="text-light mb-0 p-2 fs-6">
+            Contactanos 1-(305)-725-1000
+        </p>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'IND' %}">CarWash</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'IND' %}">Inicio</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ad. usuario
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'SER' %}">Contratar Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'AGE_CLI' %}">Mis Servicios</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% if perms.carWash.add_servicios %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ad. Categorias y estados
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORM_AGRE_CATE' %}">Agregar categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'CATE_ESTA' %}">Ver categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORM_AGRE_ESTA' %}">Agregar estados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'ESTA' %}">Ver Estados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORM_AGRE_VEHI' %}">Agregar vehiculos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'VEHI' %}">Ver vehiculos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ad. Negocio
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'AGRE_SERV' %}">Agregar Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'AGE_AD' %}">Administrar agenda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'PDF' %}">Informes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Bienvenido: {{user.first_name}} {{user.last_name}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'CERRAR_SESION' %}">Cerrar Sesion</a>
+                    </li>
+
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Formularios
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'REG' %}">Registrarse</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'INI' %}">Iniciar Sesion</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--========================================================== -->
+    <!--SERVICIOS CONTRATADOS-->
+    <!--========================================================== -->
+    <div id="invoice">
+        <div id="container_1" class="container">
+            <button id="btnCrearPdf" type="submit" class="btn btn-primary mt-5">Exportar a pdf</button>
+            <a class="btn btn-warning mt-5" href="{% url 'CANCHASCSV' %}">Exportar a CSV</a>
+            <section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto"
+                id="intro">
+                <p class="p-3  fs-4">
+                    Tabla de administrador
+                </p>
+            </section>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Nombre cliente
+                        </th>
+                        <th scope="col">
+                            Categoria vehiculo
+                        </th>
+                        <th scope="col">
+                            servicio contrado
+                        </th>
+                        <th scope="col">
+                            Categoria servicio
+                        </th>
+                        <th scope="col">
+                            Fecha contrato
+                        </th>
+
+                        <th scope="col">
+                            precio
+                        </th>
+                        <th scope="col">
+                            estado servicio
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in contratos %}
+                    <tr>
+                        <td>
+                            {{item.2}}
+                        </td>
+                        <td>
+                            {{item.4}}
+                        </td>
+                        <td>
+                            {{item.6}}
+                        </td>
+                        <td>
+                            {{item.3}}
+                        </td>
+                        <td>
+                            {{item.1}}
+                        </td>
+                        <td>
+                            {{item.5}}
+                        </td>
+                        <td>
+                            {{item.7}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto"
+                id="intro">
+                <p class="p-3  fs-4">
+                    Tabla de ganancias y contratos
+                </p>
+            </section>
+            <table class="table table-hover" id="id_pdf">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            contratos vigentes
+                        </th>
+                        <th scope="col">
+                            Servicios completados
+                        </th>
+                        <th scope="col">
+                            Ganancias por servicio completado
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cantidad %}
+                    <tr>
+                        <td>
+                            {{item.0}}
+                        </td>
+                        {% endfor %}
+                        {% for i in completos %}
+                        <td>
+                            {{i.1}}
+                        </td>
+                        <td>
+                            {{i.0}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Escuchamos el click del botón
+        const $boton = document.querySelector("#btnCrearPdf");
+        $boton.addEventListener("click", () => {
+            const $elementoParaConvertir = document.querySelector("#invoice"); // <-- Aquí puedes elegir cualquier elemento del DOM
+            html2pdf()
+                .set({
+                    margin: 1,
+                    filename: 'documento.pdf',
+                    html2canvas: {
+                        scale: 3, // A mayor escala, mejores gráficos, pero más peso
+                        letterRendering: true,
+                    },
+                    jsPDF: {
+                        unit: "in",
+                        format: "a3",
+                        orientation: 'landscape' // landscape o portrait
+                    }
+                })
+                .from($elementoParaConvertir)
+                .save()
+                .catch(err => console.log(err));
+        });
+    });
+</script>
+
+</html>

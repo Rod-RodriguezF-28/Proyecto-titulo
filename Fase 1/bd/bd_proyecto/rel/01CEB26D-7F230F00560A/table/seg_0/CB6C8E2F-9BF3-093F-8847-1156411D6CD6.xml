@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CB6C8E2F-9BF3-093F-8847-1156411D6CD6" name="TIPO_EMPLEADO">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>F5C61A66-EC1E-7886-E688-719DAC770050</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_tipo_empleado" id="5CCDCF06-72D1-4CA8-FCA2-F0DD826B3A08">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>72EF30B6-36EB-5BAA-15A3-8BA6E7F15ABC</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="categoria_empleado" id="589BD049-F8BD-2418-4DEE-765640D19800">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>1759562E-E064-F04A-9114-A35C40B6685B</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="departamento_empleado" id="C47F935B-9972-178D-3776-CE39A5C03743">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>D4129F8E-570A-C7AD-61D2-30DB451C1925</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F2DA60E4-53E5-4F95-EDCF-9DF611A95F33" name="TIPO_EMPLEADO_PK">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>9C9F133B-A680-F74A-F93E-2940D3DE859D</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5CCDCF06-72D1-4CA8-FCA2-F0DD826B3A08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

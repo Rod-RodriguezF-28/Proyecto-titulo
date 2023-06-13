@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/trabajos.css' %}">
+<link rel="stylesheet" href="{% static 'css/galeria.css' %}">
+<link rel="stylesheet" href="{% static 'css/registrarse.css' %}">
+{% endblock css %}
+
+{% block title %}
+<title>confirmar servicios</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!--SERVICIOS DISPONIBLES-->
+<!--========================================================== -->
+<section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto" id="intro">
+  <p class="p-3  fs-4">
+    bienvenido al sistema de confirmacion de contrato. <br><span class="text-primary">Usuario: {{user.first_name}}
+      {{user.last_name}}</span>
+  </p>
+</section>
+<div class="container">
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">
+          Nombre
+        </th>
+        <th scope="col">
+          Precio
+        </th>
+        <th scope="col">
+          Id_Categoria
+        </th>
+        <th scope="col">
+          Funciones
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          {{servicio.nombre_ser}}
+        </td>
+        <td>
+          {{servicio.precio_ser}}
+        </td>
+        <td>
+          {{servicio.categoria_ser.tipo_ser }}
+        </td>
+        <td>
+          <a href="#" class="btn btn-primary fw-bold text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="confirmar('{{servicio.nombre_ser}}')">Confirmar contrato</a>
+
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <span
+    class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+
+
+
+<div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar datos de contrato</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{% url 'INSERTA' %}" method="POST">
+          <div class="modal-body">
+            {% csrf_token %}
+            <p>Selecione datos para el servicio:</p>
+            <div id="nom_servicio" class="fw-bold mb-3"></div>
+            <div class="mb-3">
+              <input type="hidden" class="form-control" name="nombre_servicio" id="nombre_servicio"
+                placeholder="Nombre del servicio" value="{{servicio.id_ser}}" required>
+            </div>
+            <div class="mb-3">
+              <select class="form-select" aria-label="Default select example" name="cate_vehi" id="cate_vehi" required>
+                <option selected>Seleccione la categoria del vehiculo</option>
+                {% for item in vehiculos %}
+                <option value="{{item.0}}">{{item.1}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3">
+              <input type="date" class="form-control" name="fecha_ini" id="fecha_ini" required>
+            </div>
+            <div class="mb-3">
+              <input type="hidden" class="form-control" name="dueno" id="dueno" value="--" required>
+            </div>
+            <div class="mb-3">
+              {% for item in estado %}
+              <input type="hidden" class="form-control" name="estado" id="estado" value="{{item.0}}" required>
+              {% endfor %}
+            </div>
+
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Contratar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <span
+    class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+{% endblock contenido %}
+{% block js %}
+<script>
+  function confirmar(nombre_ser) {
+    document.getElementById("nom_servicio").innerHTML = nombre_ser;
+    document.getElementById("nombre_servicio").value = id_ser
+    //location.href = '/buscar_modificar/'+nombre_ser+'/';
+  }
+</script>
+{% endblock js %}

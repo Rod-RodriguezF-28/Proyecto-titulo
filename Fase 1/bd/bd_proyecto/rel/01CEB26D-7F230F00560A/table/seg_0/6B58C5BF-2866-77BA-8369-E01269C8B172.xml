@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6B58C5BF-2866-77BA-8369-E01269C8B172" name="AGENDA">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-21 07:05:18 UTC</createdTime>
+<generatorID>0AF171F9-C79A-8835-2994-4A001D4259AC</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_agenda" id="E9BA3600-E58B-4B3E-8657-58F556D37D2F">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-21 07:05:18 UTC</createdTime>
+<generatorID>A3677C73-3427-AB5D-D538-16D1A8D85610</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="horario_trabajo" id="5B2C5173-A6C6-1D3F-944C-F9A10C0463A1">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-21 07:05:18 UTC</createdTime>
+<generatorID>E4F9C34C-2C91-435A-5A16-1B8D13C29718</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hora_colacion" id="7E18BE3B-CBD9-D593-E471-BE4BF35282C5">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-21 07:05:18 UTC</createdTime>
+<generatorID>A4C58EE0-B618-9AB5-F8C0-89581ED993A0</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="disponibilidad_empleado" id="F677E5F3-BD4E-8DA9-DD8B-2B01501B3A66">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-21 07:05:18 UTC</createdTime>
+<generatorID>A9C90C06-666F-2B0C-0E91-1B6356BAC6EE</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DB164F4B-7F22-18AC-D3B8-A47F2C98A568" name="AGENDA_PK">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-21 07:05:18 UTC</createdTime>
+<generatorID>111017C2-7387-0825-00AA-54A305D22648</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E9BA3600-E58B-4B3E-8657-58F556D37D2F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

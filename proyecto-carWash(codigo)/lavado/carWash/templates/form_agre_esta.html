@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/registrarse.css' %}">
+
+{% endblock css %}
+
+{% block title %}
+<title>Formulario de categorias</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!-- CONTENEDOR DEL FORMULARIO -->
+<!--========================================================== -->
+<div class="container  border-top border-primary " style="max-width: 500px" id="contenedor-formulario">
+    <div class="text-center mb-4" id="titulo-formulario">
+        <div>
+            <img src="{% static './img/support.png' %}" alt="" class="img-fluid ps-5">
+        </div>
+        <h2>
+            Agrega tu estado
+        </h2>
+        <p class="fs-5">
+            Estamos aqui para solucionar tus problemas
+        </p>
+    </div>
+    <form action="{% url 'FORM_AGRE_ESTA' %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="estado_ser" id="estado_ser" value="{{estados.estado_ser}}"
+                placeholder="Nombre del estado" required>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class=" btn btn-primary w-100 fs-5">
+                Agregar estado
+            </button>
+        </div>
+    </form>
+    <span
+        class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+{% endblock contenido %}

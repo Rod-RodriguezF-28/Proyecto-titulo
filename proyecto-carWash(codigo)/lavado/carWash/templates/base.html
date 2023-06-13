@@ -1,0 +1,247 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    {% block css %}
+    {% endblock css %}
+    {% block title %}
+    {% endblock title %}
+</head>
+
+<body class="body-index">
+    <!--========================================================== -->
+    <!-- ENCABEZADO -->
+    <!--========================================================== -->
+    <header class="container-fluid bg-primary d-flex justify-content-center">
+        <p class="text-light mb-0 p-2 fs-6">
+            Contactanos 1-(305)-725-1000
+        </p>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'IND' %}">CarWash</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'IND' %}">Inicio</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ad. usuario
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'SER' %}">Contratar Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'AGE_CLI' %}">Mis Servicios</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% if perms.carWash.add_servicios %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ad. Categorias y estados
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORM_AGRE_CATE' %}">Agregar categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'CATE_ESTA' %}">Ver categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORM_AGRE_ESTA' %}">Agregar estados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'ESTA' %}">Ver Estados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORM_AGRE_VEHI' %}">Agregar vehiculos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'VEHI' %}">Ver vehiculos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ad. Negocio
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'AGRE_SERV' %}">Agregar Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'AGE_AD' %}">Administrar agenda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'PDF' %}">Informes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Bienvenido: {{user.first_name}} {{user.last_name}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'CERRAR_SESION' %}">Cerrar Sesion</a>
+                    </li>
+
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Formularios
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="formularios">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'REG' %}">Registrarse</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'INI' %}">Iniciar Sesion</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--========================================================== -->
+    <!-- SLIDER DE IMAGENES-->
+    <!--========================================================== -->
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="{% static './img/reparacion_neumatico.jpg' %}" class="d-block w-100" height="550" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="fw-bold">Cambio de neumatico</h5>
+                    <p class="fw-bold">
+                        Reparacion o cambio de los neumaticos averiados.
+                    </p>
+                    <a href="{% url 'SER' %}" class="btn btn-primary fw-bold text-light">Leer mas...</a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static './img/cambio_aceite.jpg' %}" class="d-block w-100" height="550" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="fw-bold">Cambio de aceite</h5>
+                    <p class="fw-bold">
+                        Renovacion del aceite del vehiculo para mantener el motor en buen estado.
+                    </p>
+                    <a href="{% url 'SER' %}" class="btn btn-primary fw-bold text-light">Leer mas...</a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static './img/Alineacion.jpg' %}" class="d-block w-100" height="550" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="fw-bold">Alineacion y balanceo</h5>
+                    <p class="fw-bold">
+                        Se procede a alinear y balancear las llantas para que giren sin tener vibraciones a
+                        determinadas velocidades.
+                    </p>
+                    <a href="{% url 'SER' %}" class="btn btn-primary fw-bold text-light">Leer mas...</a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static './img/scanner.jpg' %}" class="d-block w-100" height="550" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="fw-bold">Scanner</h5>
+                    <p class="fw-bold">
+                        El scanner Automotriz es una herramienta que nos permite detectar las fallas electricas de
+                        un vehiculo.
+                    </p>
+                    <a href="{% url 'SER' %}" class="btn btn-primary fw-bold text-light">Leer mas...</a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static './img/limpieza.jpg' %}" class="d-block w-100" height="550" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="fw-bold">Limpieza</h5>
+                    <p class="fw-bold">
+                        Se hace un aseo profundo del vehiculo para dejarlo como nuevo.
+                    </p>
+                    <a href="{% url 'SER' %}" class="btn btn-primary fw-bold text-light">Leer mas...</a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static './img/kilometraje.jpg' %}" class="d-block w-100" height="550" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="fw-bold">Revision del kilometraje</h5>
+                    <p class="fw-bold">
+                        Recomendamos periodimante hacer una revision del kilometraje de tu vehiculo donde
+                        examinamos el funcionamiento general de tu auto.
+                    </p>
+                    <a href="{% url 'SER' %}" class="btn btn-primary fw-bold text-light">Leer mas...</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!--========================================================== -->
+    <!-- INTRODUCCION DE SERVICIOS-->
+    <!--========================================================== -->
+    <section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto"
+        id="intro">
+        <h1 class="p-3 fs-2 border-top border-3">
+            Una agencia automotora única para todas tus necesidades de <span class="text-primary">Mantencion
+                Automotriz<span />
+        </h1>
+        <p class="p-3  fs-4">
+            <span class="text-primary">CarWash.</span> es la agencia donde te ayudamos a resolver los problemas de tu
+            auto, moto o camioneta.
+        </p>
+    </section>
+    {% block contenido %}
+    {% endblock contenido %}
+    <!--========================================================== -->
+    <!--FOOTER-->
+    <!--========================================================== -->
+    <footer class="w-100  d-flex  align-items-center justify-content-center flex-wrap">
+        <p class="fs-5 px-3  pt-3">
+            CarWash. &copy; Todos Los Derechos Reservados 2021
+        </p>
+        <div id="iconos">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+    </footer>
+    {% block js %}
+    {% endblock js %}
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

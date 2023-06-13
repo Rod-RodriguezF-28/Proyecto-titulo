@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Inicio</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!-- TIPOS DE SERVICIOS-->
+<!--========================================================== -->
+<section class="w-100">
+  <div class="row w-75 mx-auto" id="servicios-fila-1">
+    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-start my-5 icono-wrap">
+      <img src="{% static './img/ilus_1.svg' %}" alt="desarrollo" width="180" height="160">
+      <div>
+        <h3 class="fs-5 mt-4 px-4 pb-1">
+          Mantencion
+        </h3>
+        <p class="px-4">
+          Mantencion completa de tu vehiculo ya sea auto, moto o camioneta
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-start  my-5 icono-wrap">
+      <img src="{% static './img/ilus_2.svg' %}" alt="concepto" width="180" height="160">
+      <div>
+        <h3 class="fs-5 mt-4 px-4 pb-1 icono-wrap">
+          Servicios
+        </h3>
+        <p class="px-4">
+          puedes contratar facilmente los servicios disponibles ofrecidos por CarWash.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row w-75 mx-auto mb-5" id="servicios-fila-2">
+    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-start  my-5 icono-wrap">
+      <img src="{% static './img/comunicacion.svg' %}" alt="comunicaciones" width="180" height="160">
+      <div>
+        <h3 class="fs-5 mt-4 px-4 pb-1">
+          Comunicaciones
+        </h3>
+        <p class="px-4">
+          Contactanos a traves de nuestra pagina web o nuestro numero telefonico.
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-start my-5 icono-wrap">
+      <img src="{% static './img/dinero.svg' %}" alt="seo" width="180" height="160">
+      <div>
+        <h3 class="fs-5 mt-4 px-4 pb-1">
+          Todo Medio de Pago
+        </h3>
+        <p class="px-4">
+          Recibimos todo medio de pago tarjeta, tranferencia o deposito
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--========================================================== -->
+<!-- SECCION ACERCA DE NOSOTROS-->
+<!--========================================================== -->
+<section>
+  <div class="container w-50 m-auto text-center" id="equipo">
+    <h1 class="mb-5 fs-2">
+      Equipo pequeño con <span class="text-primary">resultados Grandes</span>.
+    </h1>
+    <p class="fs-4 ">
+      Siempre buscamos las personas adecuadas para que trabajen con nosotros. Si te sientes listo para
+      este reto, te esperamos para que te unas a nosotros.
+    </p>
+  </div>
+  <div class="mt-5 text-center">
+    <img id="img-equipo" src="{% static './img/equipo1.jpg' %}" alt="equipo">
+  </div>
+  <div id="local" class="border-top border-2">
+    <div class="mapa">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.2679536502405!2d-70.5807751847178!3d-33.598351412504336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d7037854df81%3A0x893f58a1479b8f82!2sDuoc%20UC%3A%20Sede%20Puente%20Alto!5e0!3m2!1ses!2scl!4v1623811090594!5m2!1ses!2scl"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div>
+      <div class="wrapper-local">
+        <h2>
+          Ubicado en Puente Alto, DuocUC
+        </h2>
+        <h2 class="text-primary mb-4" id="typewriter">
+        </h2>
+        <p class="fs-5 text-body">
+          Elijimos Puente Alto para nuestra sucursal con el objetivo de estar cerca a nuestros
+          clientes. Estamos ubicados en Puente Alto, el corazon y el centro financiero de Santiago, cerca de los
+          mejores restaurantes, tiendas y tan solo 15 minutos del metro. Visitennos y no se arrepentiran!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock contenido %}
+
+{% block js %}
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock js %}

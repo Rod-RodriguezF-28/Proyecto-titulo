@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/trabajos.css' %}">
+{% endblock css %}
+
+{% block title %}
+<title>Agenda</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!--SERVICIOS CONTRATADOS-->
+<!--========================================================== -->
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Nombre del servicio
+                </th>
+                <th scope="col">
+                    Precio del servicio
+                </th>
+                <th scope="col">
+                    Categoria del servicio
+                </th>
+                <th scope="col">
+                    fecha de contrato
+                </th>
+                <th scope="col">
+                    estado del servicio
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in contratos %}
+            <tr>
+                <td>
+                    {{item.servicio.nombre_ser}}
+                </td>
+                <td>
+                    {{item.servicio.precio_ser}}
+                </td>
+                <td>
+                    {{item.servicio.categoria_ser.tipo_ser}}
+                </td>
+                <td>
+                    {{item.fecha_ini}}
+                </td>
+                <td>
+                    {{item.estado_es.estado_ser}}
+                </td>
+                
+                <td scope="col">
+                    
+                    <a href="#" id="can" class="btn btn-danger fw-bold text-light" onclick="cancelar('{{item.id_contrato}}')">Cancelar contrato</a>
+
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <span class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+{% endblock contenido %}
+{% block js %}
+  <script>
+    function cancelar(id_contrato) {
+      var opcion = confirm("Seguro que quiere cancelar el servicio " +id_contrato+"?");
+      if (opcion == true) {
+        location.href = '/cancelar_contrato/'+id_contrato+'/';
+      }  
+    }
+  </script>
+{% endblock js %}

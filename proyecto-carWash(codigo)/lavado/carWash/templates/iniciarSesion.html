@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/registrarse.css' %}">
+
+{% endblock css %}
+
+{% block title %}
+<title>Inicio Sesion</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!-- CONTENEDOR DEL FORMULARIO -->
+<!--========================================================== -->
+<div class="container  border-top border-primary " style="max-width: 500px" id="contenedor-formulario">
+    <div class="text-center mb-4" id="titulo-formulario">
+        <div>
+            <img src="{% static './img/iniciar.jpg' %}" alt="" class="img-fluid ps-5">
+        </div>
+        <h2>
+            Inicia Sesion
+        </h2>
+        <p class="fs-5">
+            Estamos aqui para solucionar tus problemas
+        </p>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="nombre usuario">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="pass1" id="pass1" placeholder="password">
+        </div>
+        <div class="mb-3">
+            <p><a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a></p>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class=" btn btn-primary w-100 fs-5">
+                Iniciar Sesion
+            </button>
+        </div>
+        <span class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+    </form>
+</div>
+{% endblock contenido %}

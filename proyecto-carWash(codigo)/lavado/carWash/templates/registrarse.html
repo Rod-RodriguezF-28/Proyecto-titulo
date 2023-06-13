@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/registrarse.css' %}">
+{% endblock css %}
+
+{% block title %}
+<title>Registrarse</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!-- CONTENEDOR DEL FORMULARIO -->
+<!--========================================================== -->
+<div class="container  border-top border-primary " style="max-width: 500px" id="contenedor-formulario">
+    <div class="text-center mb-4" id="titulo-formulario">
+        <div>
+            <img src="{% static './img/support.png' %}" alt="" class="img-fluid ps-5">
+        </div>
+        <h2>
+            Registra tu usuario
+        </h2>
+        <p class="fs-5">
+            Estamos aqui para solucionar tus problemas
+        </p>
+    </div>
+    <form action="{% url 'REG' %}" method="post" onsubmit="return  validarPass()">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese nombre de usuario" >
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" >
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="apeliido" name="apeliido" placeholder="Ingrese apeliido" >
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" id="txtPass1" name="txtPass1" placeholder="Ingrese password" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" id="txtPass2" name="txtPass2" placeholder="Comfirme password" required>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class=" btn btn-primary w-100 fs-5">
+                Crear Usuario
+            </button>
+        </div>
+    </form>
+    <span class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+<script>
+    function validarPass() {
+        var pass1 = document.getElementById("txtPass1").value;
+        var pass2 = document.getElementById("txtPass2").value;
+        if (pass1!=pass2){
+            alert("Contraseñas no coinciden");
+            return false;
+        }
+        return true;
+    }
+</script>
+{% endblock contenido %}

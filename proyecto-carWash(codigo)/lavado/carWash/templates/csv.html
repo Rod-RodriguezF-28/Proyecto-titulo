@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!--SERVICIOS CONTRATADOS-->
+<!--========================================================== -->
+
+<div class="container">
+    <a class="btn btn-primary mt-5" href="{% url 'CANCHASCSV' %}">Exportar a Excel</a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Nombre cliente
+                </th>
+                <th scope="col">
+                    Categoria vehiculo
+                </th>
+                <th scope="col">
+                    Categoria servicio
+                </th>
+                <th scope="col">
+                    servicio contrado
+                </th>
+                <th scope="col">
+                    Fecha contrato
+                </th>
+
+                <th scope="col">
+                    precio
+                </th>
+                <th scope="col">
+                    estado servicio
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contra in contratos %}
+            <tr>
+                <td>
+                    {{contra.2}}
+                </td>
+                <td>
+                    {{contra.4}}
+                </td>
+                <td>
+                    {{contra.6}}
+                </td>
+                <td>
+                    {{contra.3}}
+                </td>
+                <td>
+                    {{contra.1}}
+                </td>
+                <td>
+                    {{contra.5}}
+                </td>
+                <td>
+                    {{contra.7}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="container">
+        <section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto"
+            id="intro">
+            <p class="p-3  fs-4">
+                Tabla de ganancias y contratos
+            </p>
+        </section>
+        <table class="table table-hover" id="id_pdf">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        contratos vigentes
+                    </th>
+                    <th scope="col">
+                        Servicios completados
+                    </th>
+                    <th scope="col">
+                        Ganancias por servicio completado
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contra in cantidad %}
+                <tr>
+                    <td>
+                        {{contra.0}}
+                    </td>
+                    {% endfor %}
+                    {% for contra in completos %}
+                    <td>
+                        {{contra.1}}
+                    </td>
+                    <td>
+                        {{contra.0}}
+                    </td>
+                    {% endfor %}
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    {% endblock contenido %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/registrarse.css' %}">
+
+{% endblock css %}
+
+{% block title %}
+<title>Categorias y estados</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!--CATEGORIAS DISPONIBLES-->
+<!--========================================================== -->
+<section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto" id="intro">
+    <p class="p-3  fs-4">
+        bienvenido al sistema de administracion de categorias y estados. <br><span class="text-primary">Usuario:
+            {{user.first_name}}
+            {{user.last_name}}</span>
+    </p>
+</section>
+<div class="container"style="max-width: 500px" id="contenedor-formulario">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Nombre categorias
+                </th>
+                <th scope="col">
+                    Funciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in categorias %}
+            <tr>
+                <td>
+                    {{item.1}}
+                </td>
+                <td>
+                    <a href="#" class="btn btn-danger fw-bold text-light" onclick="eliminar_cate('{{item.1}}')">Eliminar categoria</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <span
+    class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+{% endblock contenido %}
+{% block js %}
+  <script>
+    function eliminar_cate(tipo_ser) {
+      var opcion = confirm("Seguro que quiere eliminar la categoria " +tipo_ser+"?");
+      if (opcion == true) {
+        location.href = '/eliminar_cate/'+tipo_ser+'/';
+      }  
+    }
+  </script>
+{% endblock js %}

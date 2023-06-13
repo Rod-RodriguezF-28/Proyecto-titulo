@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CONTRATO_SERVICIO" directorySegmentName="seg_0" id="4B152CEE-4078-48C8-8638-DFF8068AC98E">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:26:33 UTC</createdTime>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<engineerTo>
+<item key="01CEB26D-2D1B-3FAD-482C-7F230F00560A" value="true"/>
+</engineerTo>
+<sourcePk>1C1F649A-2ABA-8656-7016-2031CDEE39D8</sourcePk>
+<targetPk>7BC8033E-F19B-EF48-E344-3E4DF43CA204</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>4E515825-E99E-1CB4-9364-612BEA59B196</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>80E01A14-1A72-B4B7-E2F0-133AC297D880</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="fecha_contratacion" id="F2598DAC-9A87-7E5D-4AE9-08EC2468DCA5">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:58:24 UTC</createdTime>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<engineerTo>
+<item key="01CEB26D-2D1B-3FAD-482C-7F230F00560A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="hora_inicio" id="37B0E1CB-633C-79DD-6C9A-B3CC4BA827F9">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:58:24 UTC</createdTime>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<engineerTo>
+<item key="01CEB26D-2D1B-3FAD-482C-7F230F00560A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="hora_termino" id="E784D876-89BE-D8C8-D815-360A20D3AB25">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:58:24 UTC</createdTime>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<engineerTo>
+<item key="01CEB26D-2D1B-3FAD-482C-7F230F00560A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>

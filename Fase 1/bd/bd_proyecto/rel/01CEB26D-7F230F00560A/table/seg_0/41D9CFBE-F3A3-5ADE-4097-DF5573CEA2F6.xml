@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="41D9CFBE-F3A3-5ADE-4097-DF5573CEA2F6" name="TIPO_SERVICIO">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>A7B8338F-A0CB-CDE6-A19D-2B5E27B42494</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_tipo_servicio" id="BC91444D-E494-4B48-4E9A-9792EC3E9746">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>8F297E32-2A88-2D50-AB52-8E97924F9FB8</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="categoria_servicio" id="00656FC5-74F3-36C6-BEA1-67EEDE6A96C6">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>D9E9CD92-3397-C8F3-7DBA-6D26514A83D8</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="2207DCF7-E67F-4B7F-ABEB-593FB0C71D83">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>9D11421E-6932-5D48-10A8-E81F049B9725</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4B81193B-463B-E268-2E74-A4BC4058B397" name="TIPO_SERVICIO_PK">
+<createdBy>rodro</createdBy>
+<createdTime>2022-04-19 17:41:11 UTC</createdTime>
+<generatorID>A962B3F3-A092-9EE9-0041-536220209330</generatorID>
+<ownerDesignName>bd_proyecto</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BC91444D-E494-4B48-4E9A-9792EC3E9746"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

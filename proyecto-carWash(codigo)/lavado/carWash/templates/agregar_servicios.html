@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/trabajos.css' %}">
+<link rel="stylesheet" href="{% static 'css/galeria.css' %}">
+<link rel="stylesheet" href="{% static 'css/registrarse.css' %}">
+{% endblock css %}
+
+{% block title %}
+<title>Agregar servicios</title>
+{% endblock title %}
+
+{% block contenido %}
+
+<!--========================================================== -->
+<!--SERVICIOS DISPONIBLES-->
+<!--========================================================== -->
+<section class="d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto" id="intro">
+  <p class="p-3  fs-4">
+    bienvenido al sistema de administracion de servicios. <br><span class="text-primary">Usuario: {{user.first_name}}
+      {{user.last_name}}</span>
+  </p>
+</section>
+<div class="container">
+  <a href="{% url 'FORM_AGRE_SERV' %}" class="btn btn-primary fw-bold text-light">Agregar servicio</a>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">
+          Nombre
+        </th>
+        <th scope="col">
+          Precio
+        </th>
+        <th scope="col">
+          Categoria servicio
+        </th>
+        <th scope="col">
+          Funciones
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      {% for item in servicios %}
+      <tr>
+        <td>
+          {{item.1}}
+        </td>
+        <td>
+          {{item.2}}
+        </td>
+        <td>
+          {{item.5}}
+        </td>
+        <td class="w-50">
+          
+          <a href="#" class="btn btn-warning fw-bold text-light" onclick="modificar('{{item.1}}')">Modificar servicio</a>
+          <a href="#" class="btn btn-danger fw-bold text-light" onclick="eliminar('{{item.1}}')">Eliminar servicio</a>
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  <span
+  class="text-primary d-flex flex-column justify-content-center align-items-center pt-5  text-center w-50 m-auto">{{mensaje}}</span>
+</div>
+{% endblock contenido %}
+{% block js %}
+  <script>
+    function modificar(nombre_ser) {
+      location.href = '/buscar_modificar/'+nombre_ser+'/';
+    }
+
+    function eliminar(nombre_ser) {
+      var opcion = confirm("Seguro que quiere eliminar el servicio " +nombre_ser+"?");
+      if (opcion == true) {
+        location.href = '/eliminar/'+nombre_ser+'/';
+      }  
+    }
+  </script>
+  
+{% endblock js %}
